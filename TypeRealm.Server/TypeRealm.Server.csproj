@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0244E399-87DE-41FF-80D8-14C39052D21C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>TypeRealm.Server</RootNamespace>
+    <AssemblyName>TypeRealm.Server</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="protobuf-net, Version=2.4.0.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>..\packages\protobuf-net.2.4.0\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AttackCommandHandler.cs" />
+    <Compile Include="BattleRepository.cs" />
+    <Compile Include="ConnectedClient.cs" />
+    <Compile Include="FinishWalkingCommandHandler.cs" />
+    <Compile Include="InMemoryMessageHandlerFactory.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Messaging\Messaging.cs" />
+    <Compile Include="MoveForCommandHandler.cs" />
+    <Compile Include="NotificationService.cs" />
+    <Compile Include="PlayerRepository.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server.cs" />
+    <Compile Include="StartBattleCommandHandler.cs" />
+    <Compile Include="StartMovingToZoneCommandHandler.cs" />
+    <Compile Include="StopBattleCommandHandler.cs" />
+    <Compile Include="TurnAroundCommandHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TypeRealm.Domain\TypeRealm.Domain.csproj">
+      <Project>{f989ce08-1032-4d5d-bd35-6d263f56ff10}</Project>
+      <Name>TypeRealm.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TypeRealm.Messages\TypeRealm.Messages.csproj">
+      <Project>{7710f35d-6929-4873-8c28-7820e3618be3}</Project>
+      <Name>TypeRealm.Messages</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
